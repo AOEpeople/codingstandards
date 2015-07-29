@@ -5,7 +5,7 @@
         This ruleset is much more stricter than the "aoe" ruleset.
     </description>
     <rule ref="PSR2"/>
-    <rule ref="../../../../../../codingstandard/Aoe" />
+    <rule ref="../../../../../../vendor/aoe/codingstandards/Aoe" />
     <rule ref="Generic.Files.LineLength">
         <properties>
             <property name="lineLimit" value="140"/>
