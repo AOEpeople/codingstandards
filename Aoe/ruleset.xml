@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<ruleset name="Aoe">
+    <description>
+        This ruleset defines the sniffs defined by Aoe.
+    </description>
+</ruleset>

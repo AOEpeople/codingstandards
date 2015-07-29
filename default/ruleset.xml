@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<ruleset name="default">
+    <description>
+        This ruleset is based on the PSR2 standard with some exclusions.
+    </description>
+    <rule ref="PSR2">
+        <!-- The following excludes are needed due to the architecture of the eft TYPO3 extension -->
+        <exclude name="Squiz.Classes.ValidClassName.NotCamelCaps"/>
+        <exclude name="PSR1.Classes.ClassDeclaration.MissingNamespace"/>
+        <exclude name="PSR2.Classes.ClassDeclaration.ExtendsLine"/>
+        <exclude name="PSR2.Classes.ClassDeclaration.ImplementsLine"/>
+    </rule>
+    <rule ref="Generic.Files.LineLength">
+        <properties>
+            <property name="lineLimit" value="140"/>
+            <property name="absoluteLineLimit" value="140"/>
+        </properties>
+    </rule>
+</ruleset>

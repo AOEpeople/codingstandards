@@ -1,0 +1,26 @@
+{
+    "name": "aoe/codingstandards",
+    "description": "Provide multiple coding standards and sniffs for PHPCS using the AOE conventions",
+    "license": "GPL-3.0",
+    "support": {
+        "email": "dev@aoe.com",
+        "issues": "https://github.com/AOEpeople/codingstandards/issues",
+        "source": "https://github.com/AOEpeople/codingstandards"
+    },
+    "authors": [
+        {
+            "name": "AOE GmbH",
+            "email": "dev@aoe.com",
+            "homepage": "http://www.aoe.com"
+        }
+    ],
+    "keywords": [
+        "AOE GmbH",
+        "PHPCS",
+        "code sniffer",
+        "codingstandards"
+    ],
+    "require-dev": {
+        "squizlabs/php_codesniffer": "2.3.*"
+    }
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<ruleset name="strict">
+    <description>
+        This ruleset is based on the PSR2 standard with some exclusions.
+        This ruleset is much more stricter than the "aoe" ruleset.
+    </description>
+    <rule ref="PSR2">
+        <!-- The following excludes are needed due to the architecture of the eft TYPO3 extension -->
+        <exclude name="PSR1.Classes.ClassDeclaration.MissingNamespace"/>
+        <exclude name="PSR1.Files.SideEffects.FoundWithSymbols"/>
+        <exclude name="Squiz.Classes.ValidClassName.NotCamelCaps"/>
+        <exclude name="Generic.NamingConventions.UpperCaseConstantName"/>
+        <exclude name="Zend.Files.ClosingTag.NotAllowed"/>
+        <exclude name="PSR2.Classes.ClassDeclaration.ExtendsLine"/>
+        <exclude name="PSR2.Classes.ClassDeclaration.ImplementsLine"/>
+        <exclude name="Generic.Formatting.DisallowMultipleStatements.SameLine"/>
+        <exclude name="Generic.ControlStructures.InlineControlStructure.NotAllowed"/>
+    </rule>
+    <rule ref="Generic.Files.LineLength">
+        <properties>
+            <property name="lineLimit" value="140"/>
+            <property name="absoluteLineLimit" value="140"/>
+        </properties>
+    </rule>
+</ruleset>
