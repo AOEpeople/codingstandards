@@ -12,4 +12,6 @@
             <property name="absoluteLineLimit" value="140"/>
         </properties>
     </rule>
+    <rule ref="PEAR.Commenting.FunctionCommentSniff">
+    </rule>
 </ruleset>
