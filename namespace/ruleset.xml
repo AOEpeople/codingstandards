@@ -5,7 +5,7 @@
         This ruleset is much more stricter than the "aoe" ruleset.
     </description>
     <rule ref="PSR2"/>
-    <rule ref="../../../../aoe/codingstandards/Aoe">
+    <rule ref="../../../../../../vendor/aoe/codingstandards/Aoe">
         <exclude name="Aoe.CopyrightDoc.CopyrightDoc"/>
     </rule>
     <rule ref="Generic.Files.LineLength">
