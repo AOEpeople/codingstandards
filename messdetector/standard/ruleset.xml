@@ -18,6 +18,7 @@
 
     <!-- Import entire naming rule set excluding long variable rule -->
     <rule ref="rulesets/naming.xml">
+        <exclude name="ShortVariable" />
         <exclude name="LongVariable" />
     </rule>
 
