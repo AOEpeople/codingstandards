@@ -1,0 +1,6 @@
+#IDE
+/.idea
+
+#build resources
+/vendor
+/composer.lock

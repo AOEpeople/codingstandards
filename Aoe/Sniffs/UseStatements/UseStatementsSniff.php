@@ -1,18 +1,20 @@
 <?php
 
+use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Sniffs\Sniff;
+
 /*********************************
  *  Copyright notice
  *
- *  (c) 2015 AOE GmbH <dev@aoe.com>
+ *  (c) 2018 AOE GmbH <dev@aoe.com>
  *  All rights reserved
  *
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-class Aoe_Sniffs_UseStatements_UseStatementsSniff implements \PHP_CodeSniffer_Sniff
+class Aoe_Sniffs_UseStatements_UseStatementsSniff implements Sniff
 {
-
     /**
      * @var array
      */
@@ -27,10 +29,10 @@ class Aoe_Sniffs_UseStatements_UseStatementsSniff implements \PHP_CodeSniffer_Sn
     }
 
     /**
-     * @param \PHP_CodeSniffer_File $phpCsFile
+     * @param File $phpCsFile
      * @param integer $stackPtr
      */
-    public function process(\PHP_CodeSniffer_File $phpCsFile, $stackPtr)
+    public function process(File $phpCsFile, $stackPtr)
     {
         if ($this->isUndefinedFile($phpCsFile, $stackPtr)) {
             return;
@@ -41,23 +43,24 @@ class Aoe_Sniffs_UseStatements_UseStatementsSniff implements \PHP_CodeSniffer_Sn
     }
 
     /**
-     * @param PHP_CodeSniffer_File $phpCsFile
+     * @param File $phpCsFile
      * @param integer $stackPtr
      * @return bool
      */
-    private function isUndefinedFile(\PHP_CodeSniffer_File $phpCsFile, $stackPtr)
+    private function isUndefinedFile(File $phpCsFile, $stackPtr)
     {
         if ($phpCsFile->findNext(array(T_CLASS, T_INTERFACE, T_ABSTRACT), $stackPtr) === false) {
             return true;
         }
+
         return false;
     }
 
     /**
-     * @param PHP_CodeSniffer_File $phpCsFile
+     * @param File $phpCsFile
      * @param array $tokens
      */
-    private function checkUseStatementPosition(\PHP_CodeSniffer_File $phpCsFile, $tokens)
+    private function checkUseStatementPosition(File $phpCsFile, $tokens)
     {
         $i = 0;
         do {
@@ -98,6 +101,7 @@ class Aoe_Sniffs_UseStatements_UseStatementsSniff implements \PHP_CodeSniffer_Sn
             $tokens[$i]['code'] !== T_INTERFACE &&
             $tokens[$i]['code'] !== T_ABSTRACT
         );
+
         return $indices;
     }
 
@@ -114,11 +118,12 @@ class Aoe_Sniffs_UseStatements_UseStatementsSniff implements \PHP_CodeSniffer_Sn
                 return ($tokens[$i]['line'] - 1);
             }
         } while ($tokens[$i]['code'] === T_COMMENT);
+
         return false;
     }
 
     /**
-     * @param \PHP_CodeSniffer_File $phpCsFile
+     * @param File $phpCsFile
      * @param integer $useStatementLineIndex
      * @param integer $i
      */
@@ -129,23 +134,19 @@ class Aoe_Sniffs_UseStatements_UseStatementsSniff implements \PHP_CodeSniffer_Sn
             $this->lineIndices['namespaceLineIndex'] > $useStatementLineIndex
         ) {
             $phpCsFile->addWarning(
-                'use statement should be defined after the copyright doc comment
-                        and after the namespace',
+                'use statement should be defined after the copyright doc comment and after the namespace',
                 $i,
                 'wrong order'
             );
-        } else if (
-            $this->lineIndices['fileDocLineIndex'] > $useStatementLineIndex
-        ) {
 
+        } else if ($this->lineIndices['fileDocLineIndex'] > $useStatementLineIndex) {
             $phpCsFile->addWarning(
                 'use statement should be defined after the copyright doc comment',
                 $i,
                 'wrong order'
             );
-        } else if (
-            $this->lineIndices['namespaceLineIndex'] > $useStatementLineIndex
-        ) {
+
+        } else if ($this->lineIndices['namespaceLineIndex'] > $useStatementLineIndex) {
             $phpCsFile->addWarning(
                 'use statement should be defined after the namespace',
                 $i,
